@@ -7,7 +7,15 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // EACN start
+var mysql = require('mysql');
 var mensajes = require('./routes/mensajes');
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'usbw',
+	database: 'dbecan',
+	port: 3307
+ });
 // EACN end
 var app = express();
 
@@ -27,6 +35,14 @@ app.use('/users', usersRouter);
 app.get('/enviar_mensaje', mensajes.get_enviar_mensaje);
 app.post('/enviar_mensaje', mensajes.post_enviar_mensaje);
 app.get('/mensaje/:indice', mensajes.get_mensaje);
+connection.connect(function(error){
+	if(error){
+	   throw error;
+	}else{
+	   console.log('Conexion correcta.');
+	}
+ });
+ connection.end();
 // EACN end
 
 // catch 404 and forward to error handler
