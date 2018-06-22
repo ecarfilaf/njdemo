@@ -1,5 +1,10 @@
 extends layout
 
 block content
+  nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
+    button.navbar-toggler.navbar-toggler-right
+      span.navbar-toggler-icon
+    a(href='#').navbar-brand Navbar
+    div.navbarsExampleDefault
   h1= title
   p Welcome to #{title}
