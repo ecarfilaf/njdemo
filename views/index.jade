@@ -2,12 +2,15 @@ extends layout
 
 block content
   nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
-    button.navbar-toggler.navbar-toggler-right
+    button.navbar-toggler.navbar-toggler-right(type='button',data-toggle='collapse',data-target='#navbarsExampleDefault',aria-controls='navbarsExampleDefault',aria-expanded='false',aria-label='Toggle navigation')
       span.navbar-toggler-icon
     a(href='#').navbar-brand Navbar
     #navbarsExampleDefault.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item
           a(href='#').nav-link Home
-  h1= title
-  p Welcome to #{title}
+        li.nav-item
+          a(href='#').nav-link Link
+  div.jumbotron
+    h1= title
+    p Welcome to #{title}
