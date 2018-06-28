@@ -7,7 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // EACN start
-//var bootstrap = require('bootstrap');
 var jquery = require('jquery');
 var mysql = require('mysql');
 var mensajes = require('./routes/mensajes');
