@@ -5,13 +5,16 @@ block content
   p Welcome to #{title}
 
     block content
-      div.top
+      div.form-group
         form.form-horizontal(method="post", id="loginForm")
-          label Username
-          input.span3(id="username", type="text", name="User", placeholder="Enter your username")
-          label Password
-          input.span3(id="password", type="password", name="Password")
-          input.btn(type="submit", value="Log In")
+          block.form-group
+           label Username
+           input.form-control(id="username", type="text", name="User", placeholder="Enter your username")
+          block.form-group
+            label Password
+            input.form-control(id="password", type="password", name="Password", placeholder="Enter your passwrod")
+          
+        input.btn.btn-success(type="submit", value="Log In")
       div.container
         div.content
           table.table.table-striped
