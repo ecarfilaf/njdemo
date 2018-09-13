@@ -1,20 +1,24 @@
 extends layout
 
 block content
+  include header
   h1= title
   p Welcome to #{title}
 
     block content
-      div.form-group
-        form.form-horizontal(method="post", id="loginForm")
-          block.form-group
-           label Username
-           input.form-control(id="username", type="text", name="User", placeholder="Enter your username")
-          block.form-group
-            label Password
-            input.form-control(id="password", type="password", name="Password", placeholder="Enter your passwrod")
-          
-        input.btn.btn-success(type="submit", value="Log In")
+      section.login-content
+        .login-box
+          div.form-group
+            form.login-form(method="post", id="loginForm")
+              block.form-group
+                label Usuario
+                input.form-control(id="username", type="text", name="User", placeholder="Ingrese Usuario")
+              block.form-group
+                label Password
+                input.form-control(id="password", type="password", name="Password", placeholder="Ingrese Contraseña")
+              p
+              block.form-group
+                input.btn.btn-success.btn-block(type="submit", value="Ingresar")
       div.container
         div.content
           table.table.table-striped
