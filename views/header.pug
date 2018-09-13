@@ -1,2 +1,26 @@
 header.app-header
-  a.app-header__logo(href='index.html') APP
+	a.app-header__logo(href='index.html') APP
+
+	// Sidebar toggle button
+	a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+	// Navbar Right Menu
+	ul.app-nav
+
+		li.app-search
+			input.app-search__input(type="search", placeholder="Buscar")
+			button.app-search__button: i.fa.fa-search
+
+		// User Menu
+		li.dropdown
+			a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+				i.fa.fa-user.fa-lg
+			ul.dropdown-menu.settings-menu.dropdown-menu-right
+				li
+					a.dropdown-item(href='login')
+						i.fa.fa-sign-in.fa-lg
+						|	Login
+				li
+					a.dropdown-item(href='login')
+						i.fa.fa-sign-out.fa-lg
+						|	Logout
