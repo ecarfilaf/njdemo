@@ -8,8 +8,14 @@ router.get('/users', function(req, res, next) {
 });
 
 router.get('/users/login', function(req, res, next) {
+<<<<<<< HEAD
   console.log(req);
   res.render('/users/login');
 });
+=======
+  res.render('users/login');
+});
+
+>>>>>>> 078a64bed3e3d2a5e71d20ef59d5b2261189b28a
 
 module.exports = router;
