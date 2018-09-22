@@ -4,10 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var fs = require('fs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//var Tasks=require('./routes/Tasks');
 
 var app = express();
 
@@ -20,26 +20,33 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-//app.use('/Tasks', Tasks);
+//app.use('/', indexRouter);
+//app.use('/users', usersRouter);
+// dynamically include routes (Controller)
+fs.readdirSync('./routes').forEach(function (file) {
+	if(file.substr(-3) == '.js') {
+		route = require('./routes/' + file);
+		route.controller(app);
+	}
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    next(createError(404));
+	next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;
