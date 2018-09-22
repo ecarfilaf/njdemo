@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', usersRouter);
 // dynamically include routes (Controller)
 fs.readdirSync('./routes').forEach(function (file) {
+	console.log();
 	if(file.substr(-3) == '.js') {
 		route = require('./routes/' + file);
 		route.controller(app);
