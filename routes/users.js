@@ -9,8 +9,14 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('usr/login');
 });
+router.post('/login', function(req, res, next) {
+  res.render('usr/login');
+});
 
 router.get('/logout', function(req, res, next) {
+  res.render('usr/logout');
+});
+router.post('/logout', function(req, res, next) {
   res.render('usr/logout');
 });
 
