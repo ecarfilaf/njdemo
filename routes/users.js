@@ -6,9 +6,12 @@ router.get('/', function(req, res, next) {
   res.send('respond with a user resource');
 });
 
-router.get('/users/login', function(req, res, next) {
-  console.log('login get');
-  res.render('login');
+router.get('/login', function(req, res, next) {
+  res.render('usr/login');
+});
+
+router.get('/logout', function(req, res, next) {
+  res.render('usr/logout');
 });
 
 module.exports = router;
