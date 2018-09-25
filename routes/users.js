@@ -6,9 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a user resource');
 });
 
-router.get('users/login', function(req, res, next) {
+router.get('/users/login', function(req, res, next) {
   console.log('login get');
-  res.render('usr/login');
+  res.render('login');
 });
 
 module.exports = router;

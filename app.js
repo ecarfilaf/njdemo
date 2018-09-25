@@ -7,7 +7,7 @@ var cors = require('cors');
 var fs = require('fs');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -20,19 +20,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
-// dynamically include routes (Controller)
-fs.readdirSync('./routes').forEach(function (file) {
-	console.log();
-	if(file.substr(-3) == '.js') {
-		route = require('./routes/' + file);
-		route.controller(app);
-	}
-});
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
