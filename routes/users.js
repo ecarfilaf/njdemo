@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Request = require("request");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -10,7 +11,20 @@ router.get('/login', function(req, res, next) {
   res.render('usr/login');
 });
 router.post('/login', function(req, res, next) {
-  res.render('usr/login');
+  var sUser = req.body.Username;
+  var sPass = req.body.Password;
+  //console.log(req);
+  Request.post({
+      "headers": { "content-type": "application/json" },
+      "url": "http://localhost:2999/tasks/1",
+      "body": JSON.stringify({"Id":"1","Title":"Go to Market tomorrow","Status":"done"})
+    }, (error, response, body) => {
+      if(error) {
+        return console.dir(error);
+      }
+      console.dir(JSON.parse(body));
+    });
+  res.render('../index');
 });
 
 router.get('/logout', function(req, res, next) {
